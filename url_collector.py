@@ -14,6 +14,10 @@ with open ("WLASL_v0.3.json", 'r') as file:
             instances = record.get("instances", [])
             for instance in instances:
                 url = instance.get("url")
-                target_urls[gloss_value].append(url)
+                if(url.contains("youtube")):
+                    continue
+                
+                else:
+                    target_urls[gloss_value].append(url)
 for target, urls in target_urls.items():
     print(f"URLS for values: '{target}':{urls}")
