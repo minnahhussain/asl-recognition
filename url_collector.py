@@ -14,7 +14,7 @@ with open ("WLASL_v0.3.json", 'r') as file:
             instances = record.get("instances", [])
             for instance in instances:
                 url = instance.get("url")
-                if(url.contains("youtube")):
+                if("youtube" in url or "youtu.be" in url):
                     continue
                 
                 else:
