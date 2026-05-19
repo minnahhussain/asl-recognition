@@ -3,6 +3,7 @@ import mediapipe as mp
 import csv
 import pickle
 import os
+import numpy as np
 #Setup variables
 HandLandmarker = mp.tasks.vision.HandLandmarker
 BaseOptions = mp.tasks.BaseOptions
@@ -39,5 +40,12 @@ with HandLandmarker.create_from_options(options) as landmarker:
                         row.append(float(lm.y))
                         row.append(float(lm.z))
                     sequence.append(row)
-            print(len(sequence))
+            if(len(sequence)<10):
+                continue
+            else:
+                indices = np.linspace(0, len(sequence)-1,45, dtype = int )
+                normalized_seq = []
+                for i in indices:
+                    normalized_seq.append(sequence[i])
+
 
