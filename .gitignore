@@ -2,3 +2,10 @@ model.pkl
 hand_data.csv
 hand_landmarker.task
 check.py
+*.pkl
+asl_lstm_model.keras
+data/
+yes/
+no/
+please/
+thank_you/
