@@ -9,7 +9,7 @@ HandLandmarker = mp.tasks.vision.HandLandmarker
 BaseOptions = mp.tasks.BaseOptions
 HandLandmarkerOptions = mp.tasks.vision.HandLandmarkerOptions
 VisionRunningMode = mp.tasks.vision.RunningMode
-signs = ["yes", "no", "please", "thank you"]
+signs = ["yes", "no", "please", "thank_you"]
 
 #Opening each video and reading each frame
 options = HandLandmarkerOptions(
@@ -33,6 +33,7 @@ with HandLandmarker.create_from_options(options) as landmarker:
                 #Use the instance to DETECT landmarks
                 result = landmarker.detect(mp_image)
 
+                #Appending coordinates of each frame
                 if result.hand_landmarks:
                     row = []
                     for lm in result.hand_landmarks[0]:
@@ -40,6 +41,7 @@ with HandLandmarker.create_from_options(options) as landmarker:
                         row.append(float(lm.y))
                         row.append(float(lm.z))
                     sequence.append(row)
+            #Normalizing sequences
             if(len(sequence)<10):
                 continue
             else:
@@ -47,5 +49,10 @@ with HandLandmarker.create_from_options(options) as landmarker:
                 normalized_seq = []
                 for i in indices:
                     normalized_seq.append(sequence[i])
+                #storing each data per frame into csv files
+                with open('data/' + sign + '/' + filename + '_data.csv', 'a') as f:
+                    writer = csv.writer(f)
+                    for n in normalized_seq:
+                        writer.writerow(n)
 
 
