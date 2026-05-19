@@ -1,5 +1,5 @@
 # ASL Gesture Recognition
-Real-time American Sign Language gesture recognition using MediaPipe and an LSTM neural network — built to improve accessibility for ASL users in video call environments like Zoom and Google Meet.
+Real-time American Sign Language gesture recognition using MediaPipe and an LSTM neural network. Built to improve accessibility for ASL users in video call environments like Zoom and Google Meet.
 
 ## Motivation
 ASL users in remote work settings face a significant disadvantage in meetings. While spoken conversation flows naturally, ASL users are often limited to typing responses — which is slower and disrupts the flow of discussion. This project explores gesture recognition as a step toward bridging that gap.
